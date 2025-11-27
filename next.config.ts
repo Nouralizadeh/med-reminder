@@ -1,6 +1,8 @@
-// next.config.js
+const isProd = process.env.NODE_ENV === "production";
+
 const withPWA = require("next-pwa")({
   dest: "public",
+  disable: !isProd,
   register: true,
   skipWaiting: true,
 });
@@ -8,8 +10,6 @@ const withPWA = require("next-pwa")({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  reactCompiler: true,
-  // turbopack حذف شد
 };
 
 module.exports = withPWA(nextConfig);
