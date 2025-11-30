@@ -1,31 +1,41 @@
 // app/page.tsx
 "use client";
 
-import { 
-  AppShell, 
-  NavLink, 
-  Card, 
-  Group, 
-  Text, 
-  Stack, 
-  Title, 
-  SimpleGrid
+import {
+  AppShell,
+  NavLink,
+  Card,
+  Group,
+  Text,
+  Stack,
+  Title,
+  SimpleGrid,
 } from "@mantine/core";
-import { 
-  IconMedicineSyrup, 
-  IconPlus, 
-  IconHistory, 
+import {
+  IconMedicineSyrup,
+  IconPlus,
+  IconHistory,
   IconSettings,
   IconBell,
-  IconHome
+  IconHome,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
 
 const navItems = [
   { icon: IconHome, label: "خانه", href: "/", color: "blue" },
-  { icon: IconMedicineSyrup, label: "داروهای من", href: "/medications", color: "indigo" },
-  { icon: IconPlus, label: "افزودن دارو", href: "/add-medication", color: "teal" },
+  {
+    icon: IconMedicineSyrup,
+    label: "داروهای من",
+    href: "/medications",
+    color: "indigo",
+  },
+  {
+    icon: IconPlus,
+    label: "افزودن دارو",
+    href: "/add-medication",
+    color: "teal",
+  },
   { icon: IconHistory, label: "تاریخچه", href: "/history", color: "orange" },
   { icon: IconBell, label: "یادآوری‌ها", href: "/reminders", color: "red" },
   { icon: IconSettings, label: "تنظیمات", href: "/settings", color: "gray" },
@@ -40,7 +50,7 @@ export default function HomePage() {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: 'sm',
+        breakpoint: "sm",
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
       padding="md"
@@ -49,10 +59,17 @@ export default function HomePage() {
       <AppShell.Header>
         <Group h="100%" px="md" justify="space-between">
           <Group>
-            <IconMedicineSyrup size={30} color="var(--mantine-color-indigo-6)" />
+            <IconMedicineSyrup
+              size={30}
+              color="var(--mantine-color-indigo-6)"
+            />
             <div>
-              <Text fw={700} size="lg">Med Reminder</Text>
-              <Text size="sm" c="dimmed">مدیریت هوشمند مصرف دارو</Text>
+              <Text fw={700} size="lg">
+                Med Reminder
+              </Text>
+              <Text size="sm" c="dimmed">
+                مدیریت هوشمند مصرف دارو
+              </Text>
             </div>
           </Group>
         </Group>
@@ -82,18 +99,48 @@ export default function HomePage() {
           </Card>
 
           <SimpleGrid cols={{ base: 2, sm: 3 }}>
-            <Card component={Link} href="/medications" withBorder padding="lg" style={{ textAlign: 'center', textDecoration: 'none' }}>
-              <IconMedicineSyrup size={32} color="var(--mantine-color-indigo-6)" style={{ margin: '0 auto 8px' }} />
+            <Card
+              component={Link}
+              href="/medications"
+              withBorder
+              padding="lg"
+              style={{ textAlign: "center", textDecoration: "none" }}
+            >
+              <IconMedicineSyrup
+                size={32}
+                color="var(--mantine-color-indigo-6)"
+                style={{ margin: "0 auto 8px" }}
+              />
               <Text fw={500}>داروهای من</Text>
             </Card>
 
-            <Card component={Link} href="/add-medication" withBorder padding="lg" style={{ textAlign: 'center', textDecoration: 'none' }}>
-              <IconPlus size={32} color="var(--mantine-color-teal-6)" style={{ margin: '0 auto 8px' }} />
+            <Card
+              component={Link}
+              href="/add-medication"
+              withBorder
+              padding="lg"
+              style={{ textAlign: "center", textDecoration: "none" }}
+            >
+              <IconPlus
+                size={32}
+                color="var(--mantine-color-teal-6)"
+                style={{ margin: "0 auto 8px" }}
+              />
               <Text fw={500}>افزودن دارو</Text>
             </Card>
 
-            <Card component={Link} href="/history" withBorder padding="lg" style={{ textAlign: 'center', textDecoration: 'none' }}>
-              <IconHistory size={32} color="var(--mantine-color-orange-6)" style={{ margin: '0 auto 8px' }} />
+            <Card
+              component={Link}
+              href="/history"
+              withBorder
+              padding="lg"
+              style={{ textAlign: "center", textDecoration: "none" }}
+            >
+              <IconHistory
+                size={32}
+                color="var(--mantine-color-orange-6)"
+                style={{ margin: "0 auto 8px" }}
+              />
               <Text fw={500}>تاریخچه</Text>
             </Card>
           </SimpleGrid>

@@ -1,6 +1,6 @@
 // services/medicationService.ts
 import { Medication } from "@/types/medication";
-import {medications} from "@/lib/mockData";
+import { medications } from "@/lib/mockData";
 
 export async function getMedications(): Promise<Medication[]> {
   // شبیه سازی تاخیر network

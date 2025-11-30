@@ -7,7 +7,11 @@ import MedicationCard from "@/components/MedicationCard";
 import Link from "next/link";
 
 function MedicationsContent() {
-  const { data: medications, isLoading, error } = useQuery({
+  const {
+    data: medications,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["medications"],
     queryFn: getMedications,
   });
@@ -24,7 +28,7 @@ function MedicationsContent() {
     return (
       <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
         <div className="text-red-600 font-medium">خطا در بارگذاری داروها</div>
-        <button 
+        <button
           onClick={() => window.location.reload()}
           className="mt-2 bg-red-500 text-white px-4 py-2 rounded text-sm"
         >
@@ -33,12 +37,11 @@ function MedicationsContent() {
       </div>
     );
   }
-
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">داروهای من</h1>
-        <Link 
+        <Link
           href="/add-medication"
           className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors"
         >
@@ -55,9 +58,11 @@ function MedicationsContent() {
       {medications?.length === 0 && (
         <div className="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
           <div className="text-6xl mb-4">💊</div>
-          <div className="text-gray-500 text-lg mb-4">هنوز دارویی اضافه نکرده‌اید</div>
-          <Link 
-            href="/add-medication" 
+          <div className="text-gray-500 text-lg mb-4">
+            هنوز دارویی اضافه نکرده‌اید
+          </div>
+          <Link
+            href="/add-medication"
             className="inline-block bg-indigo-500 text-white px-6 py-3 rounded-lg hover:bg-indigo-600 transition-colors"
           >
             افزودن اولین دارو
@@ -71,7 +76,7 @@ function MedicationsContent() {
 export default function MedicationsPage() {
   return (
     <div className="container mx-auto p-4 max-w-2xl">
-        <MedicationsContent />
+      <MedicationsContent />
     </div>
   );
 }

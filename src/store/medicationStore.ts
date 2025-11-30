@@ -12,30 +12,34 @@ interface MedicationState {
 
 export const useMedicationStore = create<MedicationState>((set) => ({
   medications: mockMedications,
-  
-  addMedication: (med) => set((state) => ({
-    medications: [...state.medications, med],
-  })),
 
-  updateMedication: (updated) => set((state) => ({
-    medications: state.medications.map((m) =>
-      m.id === updated.id ? updated : m
-    ),
-  })),
+  addMedication: (med) =>
+    set((state) => ({
+      medications: [...state.medications, med],
+    })),
 
-  removeMedication: (id) => set((state) => ({
-    medications: state.medications.filter((m) => m.id !== id),
-  })),
+  updateMedication: (updated) =>
+    set((state) => ({
+      medications: state.medications.map((m) =>
+        m.id === updated.id ? updated : m,
+      ),
+    })),
 
-  toggleReminder: (medId, reminderId) => set((state) => ({
-    medications: state.medications.map((m) => {
-      if (m.id !== medId) return m;
-      return {
-        ...m,
-        reminders: m.reminders.map((r) =>
-          r.id === reminderId ? { ...r, notified: !r.notified } : r
-        ),
-      };
-    }),
-  })),
+  removeMedication: (id) =>
+    set((state) => ({
+      medications: state.medications.filter((m) => m.id !== id),
+    })),
+
+  toggleReminder: (medId, reminderId) =>
+    set((state) => ({
+      medications: state.medications.map((m) => {
+        if (m.id !== medId) return m;
+        return {
+          ...m,
+          reminders: m.reminders.map((r) =>
+            r.id === reminderId ? { ...r, notified: !r.notified } : r,
+          ),
+        };
+      }),
+    })),
 }));
