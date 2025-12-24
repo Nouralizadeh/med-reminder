@@ -37,7 +37,7 @@ export default function MedicationCard({ medication }: Props) {
           زمان‌های مصرف:
         </h4>
         <div className="space-y-2">
-          {medication.reminders.map((reminder) => (
+          {medication.reminders?.map((reminder) => (
             <div
               key={reminder.id}
               className="flex justify-between items-center text-sm"

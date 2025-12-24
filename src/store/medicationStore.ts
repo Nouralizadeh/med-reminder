@@ -36,7 +36,7 @@ export const useMedicationStore = create<MedicationState>((set) => ({
         if (m.id !== medId) return m;
         return {
           ...m,
-          reminders: m.reminders.map((r) =>
+          reminders: m.reminders?.map((r) =>
             r.id === reminderId ? { ...r, notified: !r.notified } : r,
           ),
         };

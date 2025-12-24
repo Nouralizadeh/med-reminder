@@ -1,12 +1,8 @@
-// services/medicationService.ts
-import { Medication } from "@/types/medication";
-import { medications } from "@/lib/mockData";
+import { supabase } from "@/lib/supabaseClient";
 
-export async function getMedications(): Promise<Medication[]> {
-  // شبیه سازی تاخیر network
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(medications);
-    }, 1000);
-  });
+export async function getMedications() {
+  const { data, error } = await supabase.from("medications").select("*");
+
+  if (error) throw error;
+  return data;
 }
