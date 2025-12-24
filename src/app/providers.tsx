@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const setUser = useAuthStore((s) => s.setUser);
   const setHydrated = useAuthStore((s) => s.setHydrated);
   console.log(
-    "auth_____________________________________",
+    "Provider auth_____________________________________",
     useAuthStore.getState(),
   );
 

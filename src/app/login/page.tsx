@@ -1,36 +1,54 @@
-//src\app\login\page.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getUser, login } from "@/services/authenticationService";
+import { login } from "@/services/authenticationService";
 import { useAuthStore } from "@/store/authStore";
 
 export default function LoginPage() {
   const router = useRouter();
+
+  const user = useAuthStore((s) => s.user);
+  const hydrated = useAuthStore((s) => s.hydrated);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // اگر کاربر قبلاً لاگین بوده، اصلاً صفحه login را نبیند
+  useEffect(() => {
+    if (hydrated && user) {
+      console.log(
+        "login after auth_____________________________________",
+        useAuthStore.getState(),
+      );
+      router.replace("/");
+    }
+  }, [hydrated, user, router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    if (useAuthStore.getState().user) router.replace("/");
+
     try {
       await login(email, password);
-      const user = await getUser();
-      useAuthStore.getState().setUser(user);
-      console.log("auth hydrated", useAuthStore.getState());
-      router.replace("/"); // بعد از لاگین میره داشبورد
+      console.log(
+        "login auth_____________________________________",
+        useAuthStore.getState(),
+      );
+      router.replace("/");
+      router.refresh(); // مهم برای sync شدن با middleware
     } catch (err: any) {
-      setError(err.message ?? "خطا در ورود");
+      setError(err?.message ?? "خطا در ورود");
     } finally {
       setLoading(false);
     }
   };
+
+  // جلوگیری از flicker قبل از hydrate
+  if (!hydrated) return null;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
