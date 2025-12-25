@@ -16,13 +16,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // اگر کاربر قبلاً لاگین بوده، اصلاً صفحه login را نبیند
   useEffect(() => {
     if (hydrated && user) {
-      console.log(
-        "login after auth_____________________________________",
-        useAuthStore.getState(),
-      );
       router.replace("/");
     }
   }, [hydrated, user, router]);
@@ -34,10 +29,6 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      console.log(
-        "login auth_____________________________________",
-        useAuthStore.getState(),
-      );
       router.replace("/");
       router.refresh(); // مهم برای sync شدن با middleware
     } catch (err: any) {

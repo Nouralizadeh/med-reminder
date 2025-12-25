@@ -7,6 +7,7 @@ import {
   IconSettings,
   IconBell,
   IconHome,
+  IconDoorExit,
 } from "@tabler/icons-react";
 import { NavLink, Stack } from "@mantine/core";
 import Link from "next/link";
@@ -26,8 +27,9 @@ const navItems = [
     color: "teal",
   },
   { icon: IconHistory, label: "تاریخچه", href: "/history", color: "orange" },
-  { icon: IconBell, label: "یادآوری‌ها", href: "/reminders", color: "red" },
+  { icon: IconBell, label: "یادآوری‌ها", href: "/reminders", color: "purple" },
   { icon: IconSettings, label: "تنظیمات", href: "/settings", color: "gray" },
+  { icon: IconDoorExit, label: "خروج", href: "/logout", color: "red" },
 ];
 
 export default function Navbar() {

@@ -23,8 +23,6 @@ export default async function proxy(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log("proxy user_____________________________________", user);
-  console.log("cookies in proxy", request.cookies.getAll());
 
   const pathname = request.nextUrl.pathname;
   const publicPaths = ["/login"];

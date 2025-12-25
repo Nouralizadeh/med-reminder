@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Providers from "../providers";
 
 function AddMedicationContent() {
   const [formData, setFormData] = useState({
